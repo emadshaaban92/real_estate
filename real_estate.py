@@ -17,10 +17,4 @@ class real_estate_product(osv.osv):
         'real_estate_num_of_bath_rooms' : fields.integer('Number of bath rooms'),   
     }
 
-    _defaults = {
-
-        'real_estate_type' : 'l',
-        'real_estate_state' : 'a',
-    }
-
 real_estate_product()    
