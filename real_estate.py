@@ -9,7 +9,7 @@ class real_estate_product(osv.osv):
         'real_estate' : fields.boolean('Real Estate'),
         'real_estate_type' : fields.selection((('l', 'Land'), ('f', 'Flat')), 'Type', required=True),
         'real_estate_size' : fields.float('Size', required=True),
-        'real_estate_state' : fields.selection((('a', 'Available'), ('n', 'Not Available')), 'State', required=True),
+        'real_estate_state' : fields.selection((('a', 'Available'), ('n', 'Not Available')), 'State'),
         'real_estate_for_sell' : fields.boolean('For Sell'),
         'real_estate_for_rent' : fields.boolean('For Rent'),
         'real_estate_flat_type' : fields.selection((('v', 'Villa'), ('f', 'Flat'), ('d', 'Duplex')), 'Flat Type'),
