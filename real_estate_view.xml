@@ -31,10 +31,11 @@
                             <group>
                                 <group>
                                     <field name='real_estate_flat_type' attrs="{'required':[('real_estate_type','=','f')]}"/>
+                                    <field name='real_estate_num_of_bath_rooms' />
                                 </group>
                                 <group>
                                     <field name='real_estate_num_of_bed_rooms'/>
-                                    <field name='real_estate_num_of_bath_rooms' />
+                                    <field name='real_estate_num_of_reception_rooms' />
                                 </group>
                             </group>
                         </page>

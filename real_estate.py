@@ -14,7 +14,8 @@ class real_estate_product(osv.osv):
         'real_estate_for_rent' : fields.boolean('For Rent'),
         'real_estate_flat_type' : fields.selection((('v', 'Villa'), ('f', 'Flat'), ('d', 'Duplex')), 'Flat Type'),
         'real_estate_num_of_bed_rooms' : fields.integer('Number of bed rooms'),
-        'real_estate_num_of_bath_rooms' : fields.integer('Number of bath rooms'),   
+        'real_estate_num_of_bath_rooms' : fields.integer('Number of bath rooms'),
+        'real_estate_num_of_reception_rooms' : fields.integer('Number of reception rooms'),   
     }
 
 real_estate_product()    
