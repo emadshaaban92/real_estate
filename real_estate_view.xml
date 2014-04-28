@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+
+        <record id="real_estates_tree_form" model="ir.ui.view">
+            <field name="name">real.estates.tree.form</field>
+            <field name="model">real.estate.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+
+                    <sheet position='before'>
+                        <header>
+                            <button name="deactivate" type="workflow" class="oe_highlight" string="Set Not Available" attrs="{'invisible':[('real_estate_state','=','n')]}" groups="real_estate.group_broker"/>
+                            <field name="real_estate_state" widget="statusbar" />
+                        </header>
+                    
+                    </sheet>
+                    
+                    <page string="Procurements" position='replace'>
+
+                    </page>
+
+                    <page string="Inventory" position='replace'>
+                        
+                    </page>
+
+                    <page string="Sales" position='replace'>
+                        <page string="Flat Properties" attrs="{'invisible':[('real_estate_type','!=','f')]}">
+                            <group>
+                                <group>
+                                    <field name='real_estate_flat_type' attrs="{'required':[('real_estate_type','=','f')]}"/>
+                                </group>
+                                <group>
+                                    <field name='real_estate_num_of_bed_rooms'/>
+                                    <field name='real_estate_num_of_bath_rooms' />
+                                </group>
+                            </group>
+                        </page>
+                    </page>
+
+                    <div name="options" position='replace'>
+                        <div>
+                            <field name="real_estate"/>
+                            <label for="real_estate"/>
+                            <field name="real_estate_for_sell"  attrs="{'invisible':[('real_estate_type','!=','f')]}"/>
+                            <label for="real_estate_for_sell" attrs="{'invisible':[('real_estate_type','!=','f')]}"/>
+                            <field name="real_estate_for_rent" attrs="{'invisible':[('real_estate_type','!=','f')]}"/>
+                            <label for="real_estate_for_rent" attrs="{'invisible':[('real_estate_type','!=','f')]}"/>
+                        </div>
+                        
+                    </div>
+
+                    <field name="type" position='replace'>
+                        <field name="real_estate_type" />
+                    </field>
+                    
+                    <field name="uom_id"  position='replace'>
+                    </field>
+
+                    <label for="ean13" position='replace'>
+                    </label>
+                    <div name="ean" position='replace'>
+                        <field name='real_estate_size'/>
+                    </div>
+
+                </data>
+            </field>
+        </record>
+        
+        <record id="real_estates_tree_view" model="ir.ui.view">
+            <field name="name">real.estates.tree.view</field>
+            <field name="model">real.estate.product</field>
+            <field name="arch" type="xml">
+                <tree string="Real Estates">
+                    <field name="name" />
+                    <field name="real_estate_type"/>
+                    <field name="real_estate_size"/>
+                    <field name="list_price" />
+                    <field name="real_estate_state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="real_estates_action">
+            <field name="name">Real Estates</field>
+            <field name="res_model">real.estate.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('real_estate','=',1)]</field>
+            <field name="context">{'default_real_estate': 1}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="real_estates_action_tree_view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="real_estates_tree_view"/>
+            <field name="act_window_id" ref="real_estates_action"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="real_estates_action_form_view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="real_estates_tree_form"/>
+            <field name="act_window_id" ref="real_estates_action"/>
+        </record>
+
+        <menuitem name="Real Estate" id="real_estate_menu" />
+        
+        <menuitem name="Real Estate Management" parent="real_estate_menu" id="real_estate_management_menu" />
+        
+        <menuitem name="Real Estates" parent="real_estate_management_menu" id="real_estates_menu" action="real_estates_action"/>
+        
+
+    </data>
+</openerp>

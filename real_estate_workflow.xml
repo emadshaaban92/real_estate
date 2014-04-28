@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="real_estate_product_wkf" model="workflow">
+            <field name="name">real.estate.product.workflow</field>
+            <field name="osv">real.estate.product</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <record id="real_estate_act_create" model="workflow.activity">
+            <field name="wkf_id" ref="real_estate_product_wkf"/>
+            <field name="name">create</field>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">write({'real_estate_state': 'a'})</field>
+        </record>
+
+        
+        <record id="real_estate_act_deactivate" model="workflow.activity">
+            <field name="wkf_id" ref="real_estate_product_wkf"/>
+            <field name="name">deactivate</field>
+            <field name="flow_stop">True</field>
+            <field name="action">write({'real_estate_state': 'n'})</field>
+            <field name="kind">function</field>
+        </record>
+
+        
+
+        <record id="real_estate_trans_deactivate" model="workflow.transition">
+            <field name="act_from" ref="real_estate_act_create"/>
+            <field name="act_to" ref="real_estate_act_deactivate"/>
+            <field name="signal">deactivate</field>
+        </record>
+
+        
+    </data>
+</openerp>

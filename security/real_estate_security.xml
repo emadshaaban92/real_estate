@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="group_broker" model="res.groups">
+            <field name="name">Broker</field>
+            <field name="comment">A broker can change the state of real estate from available to not available</field>
+        </record>
+        
+    </data>
+
+</openerp>
